@@ -1,0 +1,338 @@
+@use '../../variables.scss' as *;
+
+.cart-order-pref-banner {
+  max-width: 124rem;
+  margin: 0 auto 2.5rem;
+  background: linear-gradient(135deg, #fff0f3, #ffe4e9);
+  border: 0.12rem solid rgba($primary, 0.25);
+  border-radius: 2rem;
+  padding: 1.6rem 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0.6rem 2rem rgba($primary, 0.08);
+
+  .pref-banner-info {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+
+    .mode-icon {
+      width: 4.4rem;
+      height: 4.4rem;
+      border-radius: 50%;
+      background: $primary;
+      color: #ffffff;
+      font-size: 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .pref-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+
+      strong {
+        font-family: $font-heading;
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: $text-heading;
+      }
+
+      span {
+        font-size: 1.25rem;
+        color: $text-secondary;
+      }
+    }
+  }
+
+  .change-pref-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.6rem;
+    background: #ffffff;
+    color: $primary;
+    border: 0.12rem solid rgba($primary, 0.35);
+    border-radius: $radius-pill;
+    font-family: $font-body;
+    font-size: 1.25rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      background: $primary;
+      color: #ffffff;
+    }
+  }
+}
+
+.summary-mode-text {
+  color: $primary !important;
+  font-weight: 800;
+}
+
+.free-badge {
+  color: #2e7d32;
+  font-weight: 800;
+  background: #e8f5e9;
+  padding: 0.2rem 0.8rem;
+  border-radius: $radius-pill;
+  font-size: 1.15rem;
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 34rem;
+  gap: 3rem;
+  align-items: start;
+}
+
+.cart-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 8rem 1fr auto auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 0.12rem solid $border;
+  border-radius: 1.8rem;
+
+  img {
+    width: 8rem;
+    height: 8rem;
+    object-fit: cover;
+    border-radius: 1.2rem;
+  }
+
+  h2 {
+    font-family: $font-heading;
+    font-size: 1.6rem;
+    margin: 0 0 0.4rem;
+    color: $text-heading;
+  }
+
+  p {
+    margin: 0 0 0.4rem;
+    font-size: 1.25rem;
+    color: $text-secondary;
+
+    &.cart-item-msg {
+      color: $primary;
+      font-weight: 700;
+      font-style: italic;
+    }
+  }
+
+  strong {
+    font-size: 1.6rem;
+    color: $primary;
+  }
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #f8f8f9;
+  padding: 0.4rem 1rem;
+  border-radius: $radius-pill;
+
+  button {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: $text-heading;
+  }
+
+  span {
+    font-size: 1.4rem;
+    font-weight: 800;
+  }
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.order-summary {
+  background: #ffffff;
+  border: 0.12rem solid $border;
+  border-radius: 2rem;
+  padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+
+  h2 {
+    font-family: $font-heading;
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  p, div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+  }
+
+  div {
+    border-top: 0.1rem solid $border;
+    padding-top: 1.4rem;
+    font-weight: 800;
+    font-size: 1.8rem;
+  }
+}
+
+.cart-addons-section {
+  background: #ffffff;
+  border: 0.12rem solid $border;
+  border-radius: 2rem;
+  padding: 2rem;
+
+  .cart-addons-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.6rem;
+
+    h3 {
+      margin: 0 0 0.2rem;
+      font-family: $font-heading;
+      font-size: 1.8rem;
+      color: $text-heading;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.25rem;
+      color: $text-secondary;
+    }
+
+    .view-all-link {
+      color: $primary;
+      font-weight: 800;
+      font-size: 1.3rem;
+      text-decoration: none;
+    }
+  }
+
+  .cart-addons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+
+    .cart-addon-card {
+      background: #f8f8f9;
+      border: 0.1rem solid $border;
+      border-radius: 1.4rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.8rem;
+
+      img {
+        width: 6rem;
+        height: 6rem;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+
+      .cart-addon-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        width: 100%;
+
+        strong {
+          font-size: 1.2rem;
+          color: $text-heading;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .cart-addon-price-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.6rem;
+
+          .price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: $primary;
+          }
+
+          .orig {
+            font-size: 1.1rem;
+            color: $text-secondary;
+            text-decoration: line-through;
+          }
+        }
+
+        .cart-addon-btn {
+          width: 100%;
+          padding: 0.5rem;
+          background: #fff0f3;
+          color: $primary;
+          border: 0.1rem solid rgba($primary, 0.4);
+          border-radius: $radius-pill;
+          font-size: 1.1rem;
+          font-weight: 800;
+          cursor: pointer;
+
+          &.added {
+            background: #2e7d32;
+            color: #ffffff;
+            border-color: #2e7d32;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet-down {
+  .cart-order-pref-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+
+    .change-pref-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-addons-section .cart-addons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

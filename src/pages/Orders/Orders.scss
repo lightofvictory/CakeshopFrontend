@@ -1,0 +1,432 @@
+@use '../../variables.scss' as *;
+
+.orders-page {
+  max-width: 124rem;
+  width: min(124rem, calc(100% - 3.2rem));
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .auth-kicker {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: $primary;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+
+    h1 {
+      font-family: $font-heading;
+      font-size: 3.4rem;
+      color: $text-heading;
+      margin: 0 0 0.6rem;
+    }
+
+    p {
+      color: $text-secondary;
+      font-size: 1.35rem;
+    }
+  }
+
+  .order-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+
+    button {
+      padding: 0.9rem 2.2rem;
+      background: #f8f8f9;
+      border: 0.12rem solid $border;
+      border-radius: $radius-pill;
+      font-family: $font-body;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: $text-primary;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: $transition;
+
+      span {
+        padding: 0.2rem 0.7rem;
+        background: #ffffff;
+        border-radius: $radius-pill;
+        font-size: 1.15rem;
+      }
+
+      &.active {
+        background: $primary;
+        color: #ffffff;
+        border-color: $primary;
+
+        span {
+          background: rgba(255, 255, 255, 0.25);
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+
+    .order-card {
+      background: #ffffff;
+      border: 0.12rem solid $border;
+      border-radius: 2.4rem;
+      padding: 2.2rem;
+      box-shadow: 0 0.6rem 2rem rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .order-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .order-id-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.6rem;
+          padding: 0.4rem 1.2rem;
+          background: #fff0f3;
+          color: $primary;
+          border: 0.1rem solid rgba($primary, 0.3);
+          border-radius: $radius-pill;
+          font-family: $font-body;
+          font-size: 1.2rem;
+          font-weight: 800;
+          cursor: pointer;
+          margin-bottom: 0.8rem;
+        }
+
+        h2 {
+          font-family: $font-heading;
+          font-size: 1.8rem;
+          margin: 0 0 0.4rem;
+          color: $text-heading;
+        }
+
+        p {
+          margin: 0;
+          font-size: 1.25rem;
+          color: $text-secondary;
+        }
+
+        .order-card-side {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 0.6rem;
+
+          .order-mode-pill {
+            padding: 0.35rem 1rem;
+            background: #f8f8f9;
+            border: 0.1rem solid $border;
+            border-radius: $radius-pill;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: $text-heading;
+          }
+
+          strong {
+            font-size: 2rem;
+            color: $primary;
+            font-weight: 800;
+          }
+
+          .view-modal-btn {
+            padding: 0.6rem 1.4rem;
+            background: #fff0f3;
+            color: $primary;
+            border: 0.1rem solid rgba($primary, 0.3);
+            border-radius: $radius-pill;
+            font-family: $font-body;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: $transition;
+
+            &:hover {
+              background: $primary;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+
+      /* Live Status Stepper */
+      .order-progress-stepper {
+        background: #f8f8f9;
+        border: 0.1rem solid #f0f0f2;
+        border-radius: 1.8rem;
+        padding: 1.6rem 1.2rem;
+
+        .stepper-track {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          position: relative;
+
+          .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            flex: 1;
+            position: relative;
+            z-index: 2;
+
+            .step-node {
+              width: 4rem;
+              height: 4rem;
+              border-radius: 50%;
+              background: #ffffff;
+              border: 0.12rem solid $border;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.6rem;
+              position: relative;
+              transition: $transition;
+
+              .done-check {
+                position: absolute;
+                bottom: -0.2rem;
+                right: -0.2rem;
+                width: 1.6rem;
+                height: 1.6rem;
+                background: #2e7d32;
+                color: #ffffff;
+                border-radius: 50%;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+
+            .step-label {
+              font-size: 1.15rem;
+              font-weight: 700;
+              color: $text-secondary;
+              text-align: center;
+            }
+
+            &.completed {
+              .step-node {
+                background: #fff0f3;
+                border-color: $primary;
+              }
+              .step-label {
+                color: $primary;
+                font-weight: 800;
+              }
+            }
+
+            &.current {
+              .step-node {
+                background: $primary;
+                border-color: $primary;
+                box-shadow: 0 0.4rem 1.4rem rgba($primary, 0.4);
+                transform: scale(1.1);
+              }
+              .step-label {
+                color: $primary;
+                font-weight: 800;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .orders-empty {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: #ffffff;
+    border: 0.12rem dashed $border;
+    border-radius: 2.4rem;
+
+    h2 {
+      font-family: $font-heading;
+      font-size: 2.2rem;
+      margin: 0 0 0.6rem;
+    }
+
+    p {
+      color: $text-secondary;
+      font-size: 1.35rem;
+      margin: 0 0 2rem;
+    }
+
+    a {
+      padding: 1rem 2.4rem;
+      background: $primary;
+      color: #ffffff;
+      border-radius: $radius-pill;
+      font-weight: 800;
+      text-decoration: none;
+    }
+  }
+}
+
+/* Modal Details Box */
+.order-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(0.8rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem;
+}
+
+.order-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 65rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 2.8rem;
+  padding: 2.8rem;
+  box-shadow: 0 1.6rem 5rem rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .close-modal-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    background: #f8f8f9;
+    border: none;
+    cursor: pointer;
+  }
+
+  .modal-section-box {
+    background: #f8f8f9;
+    border: 0.12rem solid $border;
+    border-radius: 1.8rem;
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    h3 {
+      margin: 0;
+      font-family: $font-heading;
+      font-size: 1.6rem;
+      color: $text-heading;
+    }
+
+    .fulfillment-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+
+        strong {
+          font-size: 1.15rem;
+          color: $text-secondary;
+        }
+
+        p {
+          margin: 0;
+          font-size: 1.3rem;
+          font-weight: 700;
+          color: $text-heading;
+        }
+
+        &.full-col {
+          grid-column: 1 / -1;
+        }
+      }
+    }
+
+    .modal-items-table {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .modal-item-row {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 0.1rem solid #e2e8f0;
+
+        img {
+          width: 5rem;
+          height: 5rem;
+          object-fit: cover;
+          border-radius: 1rem;
+        }
+
+        .item-meta {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+
+          strong {
+            font-size: 1.3rem;
+            color: $text-heading;
+          }
+
+          span {
+            font-size: 1.15rem;
+            color: $text-secondary;
+          }
+        }
+
+        .item-price-qty {
+          display: flex;
+          align-items: center;
+          gap: 1.2rem;
+
+          span {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: $text-secondary;
+          }
+
+          strong {
+            font-size: 1.4rem;
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet-down {
+  .orders-page .orders-list .order-card .order-card-header {
+    flex-direction: column;
+    gap: 1rem;
+
+    .order-card-side {
+      align-items: flex-start;
+    }
+  }
+}
