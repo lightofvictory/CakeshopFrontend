@@ -4,6 +4,7 @@ import { assets } from "../../assets/assets";
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import { useSettings } from '../../context/SettingsContext';
+import { imageUrl } from '../../service';
 import { 
   ShoppingCartOutlined, 
   UserOutlined, 
@@ -68,7 +69,7 @@ const Navbar = () => {
   const modeLabel = getModeLabel();
   const dateText = orderPreference?.formattedDate || 'Today';
   const timeText = orderPreference?.formattedTime || '10:00 AM - 12:00 PM';
-  const logoImg = settings?.logo ? `http://localhost:3000/images/${settings.logo}` : assets.pastry;
+  const logoImg = settings?.logo ? imageUrl(settings.logo) : assets.pastry;
 
   return (
     <nav className={`navbar-container ${isScrolled ? "scrolled" : ""} ${location.pathname === '/' ? 'home-navbar' : 'page-navbar'}`}>

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import Header from '../../Components/Header/Header';
 import { assets } from '../../assets/assets.js';
 import { useSettings } from '../../context/SettingsContext';
+import { imageUrl } from '../../service';
+import { itemsService } from './service';
 import './Home.scss';
 
 const initialCakes = [
@@ -102,12 +103,12 @@ const Home = () => {
   useEffect(() => {
     const fetchBackendItems = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/items');
+        const res = await itemsService.getAll();
         if (res.data && res.data.success && Array.isArray(res.data.data) && res.data.data.length > 0) {
           const formatted = res.data.data.map((item) => ({
             id: item._id,
             name: item.name,
-            image: item.image.startsWith('http') ? item.image : `http://localhost:3000/images/${item.image}`,
+            image: item.image.startsWith('http') ? item.image : imageUrl(item.image),
             deliveryTime: '25 MINS',
             weight: '1 Kg',
             rating: '4.9',

@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+/* eslint-disable react/prop-types */
+import { createContext, useContext, useEffect, useState } from 'react';
+import { settingsService } from './service';
 
 const SettingsContext = createContext();
 
@@ -32,7 +33,7 @@ export const SettingsProvider = ({ children }) => {
 
   const fetchSettings = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/settings');
+      const res = await settingsService.get();
       if (res.data && res.data.success && res.data.data) {
         setSettings((prev) => ({ ...prev, ...res.data.data }));
       }

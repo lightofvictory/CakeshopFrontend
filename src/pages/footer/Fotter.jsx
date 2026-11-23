@@ -2,11 +2,12 @@ import { assets } from '../../assets/assets';
 import { Link } from 'react-router-dom';
 import { YoutubeOutlined } from '@ant-design/icons';
 import { useSettings } from '../../context/SettingsContext';
+import { imageUrl } from '../../service';
 import "./Footer.scss";
 
 const Footer = () => {
     const { settings } = useSettings();
-    const logoImg = settings?.logo ? `http://localhost:3000/images/${settings.logo}` : assets.pastry;
+    const logoImg = settings?.logo ? imageUrl(settings.logo) : assets.pastry;
 
     return (
         <footer className="footer-container">

@@ -1,11 +1,12 @@
 import { assets } from '../../assets/assets.js';
 import { Link } from 'react-router-dom';
 import { useSettings } from '../../context/SettingsContext';
+import { imageUrl } from '../../service';
 import './Header.scss';
 
 const Header = () => {
   const { settings } = useSettings();
-  const heroImg = settings?.bannerImage ? `http://localhost:3000/images/${settings.bannerImage}` : assets.bakeryHero;
+  const heroImg = settings?.bannerImage ? imageUrl(settings.bannerImage) : assets.bakeryHero;
 
   return (
     <header className="hero-section">

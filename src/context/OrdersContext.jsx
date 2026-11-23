@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import axios from 'axios';
+import { ordersService } from '../pages/Orders/service';
 
 const OrdersContext = createContext(null);
 
@@ -56,7 +56,7 @@ export const OrdersProvider = ({ children }) => {
         notes: orderData.cakeMessage || orderData.fulfillmentDetails?.specialInstructions || '',
       };
 
-      await axios.post('http://localhost:3000/api/orders', backendPayload);
+      await ordersService.create(backendPayload);
     } catch (err) {
       console.log('Error posting order to NestJS backend:', err.message);
     }
